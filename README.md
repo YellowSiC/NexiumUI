@@ -1,4 +1,4 @@
-# Hybrid foundation 
+# NexiumUI foundation 
 
 <img src="https://github.com/AriBermeki/logo/blob/main/logo%20(5).png" width="100%"/>
 <p align="center">
@@ -7,34 +7,34 @@
   </a>
 </p>
 
-<h3 align="center">Hybrid with Ant Design UI</h1>
+<h3 align="center">NexiumUI with Ant Design UI</h1>
 
 <p align="center">Create an efficient and enjoyable work experience</p>
 
 ![](https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*zx7LTI_ECSAAAAAAAAAAAABkARQnAQ)
-<p>Hybrid empowers developers to effortlessly build real-time web, mobile, and desktop applications in Python, without requiring prior frontend experience.</p>
+<p>NexiumUI empowers developers to effortlessly build real-time web, mobile, and desktop applications in Python, without requiring prior frontend experience.</p>
 <p>It is an incredibly powerful Python library that allows you to create cross-platform graphical user interface and Web applications with ease, similar to Electronjs, but with an integrated React  and Ant Design user interface.</p>
 
 
 
 ## ⚡ From idea to app in minutes
-<p>This feature makes Hybrid an ideal choice for creating sophisticated and comprehensive applications, catering to even the most demanding use cases.</p>
-<p>At the heart of Hybrid's architecture are cutting-edge technologies such as React, FastAPI, Chrome, and Uvicorn, providing an excellent platform for building high-quality applications that seamlessly blend into any environment.</p>
-<p>Hybrid also supports the Python ZVT 700 electronic cash register interface, allowing for seamless integration of other transactions into your applications. Additionally, Hybrid supports PWA Progressive Web Applications, enabling easy installation of your app on IOS and Android operating systems.</p>
+<p>This feature makes NexiumUI an ideal choice for creating sophisticated and comprehensive applications, catering to even the most demanding use cases.</p>
+<p>At the heart of NexiumUI's architecture are cutting-edge technologies such as React, FastAPI, Chrome, and Uvicorn, providing an excellent platform for building high-quality applications that seamlessly blend into any environment.</p>
+<p>NexiumUI also supports the Python ZVT 700 electronic cash register interface, allowing for seamless integration of other transactions into your applications. Additionally, NexiumUI supports PWA Progressive Web Applications, enabling easy installation of your app on IOS and Android operating systems.</p>
 
 
 
 
 ## 🔋 Batteries included
-<p>If you're looking for a robust and versatile library to create visually stunning applications, then Hybrid is undoubtedly the right choice. Explore the full potential of this exceptional library by giving it a try today!</p>
-<a href="https://badge.fury.io/py/Hybrid"><img src="https://badge.fury.io/py/Hybrid.svg" alt="PyPI version" height="18"></a>
-<a href='https://hybrid-document.readthedocs.io/en/latest/?badge=latest'>
-    <img src='https://readthedocs.org/projects/hybrid-document/badge/?version=latest' alt='Documentation Status' />
+<p>If you're looking for a robust and versatile library to create visually stunning applications, then NexiumUI is undoubtedly the right choice. Explore the full potential of this exceptional library by giving it a try today!</p>
+<a href="https://badge.fury.io/py/NexiumUI"><img src="https://badge.fury.io/py/NexiumUI.svg" alt="PyPI version" height="18"></a>
+<a href='https://NexiumUI-document.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/NexiumUI-document/badge/?version=latest' alt='Documentation Status' />
 </a>
 
 ## 📐 Simple architecture
 
-No more complex architecture with JavaScript frontend, REST API backend, database, cache, etc. With Hybrid you just write a monolith stateful app in Python only and get multi-user, realtime Single-Page Application (SPA).
+No more complex architecture with JavaScript frontend, REST API backend, database, cache, etc. With NexiumUI you just write a monolith stateful app in Python only and get multi-user, realtime Single-Page Application (SPA).
 ## ✨ Features
 
 - browser-based graphical user interface
@@ -60,6 +60,8 @@ No more complex architecture with JavaScript frontend, REST API backend, databas
 
   ![](https://user-images.githubusercontent.com/507615/209472919-6f7e8561-be8c-4b0b-9976-eb3c692aa20a.png)
 
+   ![](https://caphe.sfo2.cdn.digitaloceanspaces.com/assets/images/ant-design-1.jpg)
+
 
 ## 🖥 Environment Support
 
@@ -76,15 +78,15 @@ No more complex architecture with JavaScript frontend, REST API backend, databas
 ## 📦 Install
 
 ```bash
-pip install HybridUI
+pip install NexiumUIUI
 ```
 ## 🔨 Usage
 
-Write your Hybrid UI:
+Write your NexiumUI UI:
 
 ```python
-from hybrid import interface
-layout = interface.title(content='Hello World from Hybrid UI!')
+from NexiumUI import interface
+layout = interface.title(content='Hello World from NexiumUI UI!')
 app = interface.compiler(layout=layout, globale_ui_style='main.css')
 app.run()
  
@@ -94,7 +96,7 @@ app.run()
 ```python
 
 
-from hybrid import interface
+from NexiumUI import interface
 
 
 
@@ -106,7 +108,7 @@ if __name__ == '__main__':
     def main(data):
         print(data)
 
-    d1 = interface.title(content='Hybrid with Ant Design UI', level=2)
+    d1 = interface.title(content='NexiumUI with Ant Design UI', level=2)
     d2 = interface.slider(onChange=main)
     image = interface.image(src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg", alt='hallo', width='350px', height='350px')
     content = interface.content(content=[d1,d2, image])
@@ -119,7 +121,7 @@ if __name__ == '__main__':
 <img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example.png?token=GHSAT0AAAAAACB7YTQISEN2ZMMLKTWEUH5AZIFUWNA">
 
 ```python
-from hybrid import interface
+from NexiumUI import interface
 
 # example with Button onclick
 
@@ -136,7 +138,7 @@ app.run()
 <img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example1.png?token=GHSAT0AAAAAACB7YTQJY6EVAT2RZGQTG5CUZIFUXLQ">
 
 ```python
-from hybrid import interface
+from NexiumUI import interface
 
 
 
@@ -157,7 +159,7 @@ app.run()
 
 
 ```python
-from hybrid import interface
+from NexiumUI import interface
 
 # example with violinChart
 
@@ -176,7 +178,7 @@ app.run()
 
 ```python
 
-from hybrid import interface
+from NexiumUI import interface
 
 # example with slider onchage
 
@@ -190,8 +192,8 @@ app.run()
  
    
 ```
-### In August 2023, Hybrid has just been publicly released by software architecture Ari Bermeki and is in Alpha Stage.
-Anyone can install and use Hybrid. There may be issues, but we are actively working to resolve them.
+### In August 2023, NexiumUI has just been publicly released by software architecture Ari Bermeki and is in Alpha Stage.
+Anyone can install and use NexiumUI. There may be issues, but we are actively working to resolve them.
 
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
