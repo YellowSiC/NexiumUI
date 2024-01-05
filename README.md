@@ -19,7 +19,7 @@
 
 ## ⚡ From idea to app in minutes
 <p>This feature makes NexiumUI an ideal choice for creating sophisticated and comprehensive applications, catering to even the most demanding use cases.</p>
-<p>At the heart of NexiumUI's architecture are cutting-edge technologies such as React, FastAPI, Chrome, and Uvicorn, providing an excellent platform for building high-quality applications that seamlessly blend into any environment.</p>
+<p>At the heart of NexiumUI's architecture are cutting-edge technologies such as React, FastAPI, Pydantic, Chrome, and Uvicorn, providing an excellent platform for building high-quality applications that seamlessly blend into any environment.</p>
 <p>NexiumUI also supports the Python ZVT 700 electronic cash register interface, allowing for seamless integration of other transactions into your applications. Additionally, NexiumUI supports PWA Progressive Web Applications, enabling easy installation of your app on IOS and Android operating systems.</p>
 
 
