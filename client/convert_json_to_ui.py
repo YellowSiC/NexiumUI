@@ -3,12 +3,30 @@
 
 def convertJsonToAntdUi_()->str:
     te = """
-        const convertJsonToAntdUi = (json) => {
+            function ReactNode({ component, props, content }) {
+                const Element = component;
+
+                return <Element {...props}>{
+                content && (
+                    Array.isArray(content)
+                        ? content.map((item, index) => (
+                            <div key={index}>{convertJsonToAntdUi(item)}</div>
+                        ))
+                        : <div>{content}</div>
+                    )
+                }</Element>;
+            }
+            
+            const convertJsonToAntdUi = (json) => {
             if (!json || !json.component) return null;
+
             const { component, content, props } = json;
+            const Component = antdComponents[component];
             const updatedProps = iteratePropsAndAttachEventHandler(props);
 
-            const Component = antdComponents[component];
+            if (!Component) {
+                return ReactNode({component, props:updatedProps, content})
+            }
 
             return (
                 <Component {...updatedProps}>
@@ -17,10 +35,12 @@ def convertJsonToAntdUi_()->str:
                             ? content.map((item, index) => (
                                 <div key={index}>{convertJsonToAntdUi(item)}</div>
                             ))
-                            : content
+                            : <div>{content}</div>
                     )}
                 </Component>
             );
         };
+
+
     """
     return te

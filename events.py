@@ -8,11 +8,21 @@ import pydantic as p
 from  typing import Optional, Any, Union, List, Literal, Callable, Dict
 
 
+class BindingEvent(p.BaseModel):
+    event_type: str = 'BindingEvent'
+    property: str
+    targest_id:str
 
 
-class NavigateToEvent(p.BaseModel):
-    event_type: str = 'NavigateToEvent'
-    locationSearch: str
+
+
+
+
+
+
+class PageNavigationEvent(p.BaseModel):
+    event_type: str = 'PageNavigationEvent'
+    path: str
 
 class CloseModalEvent(p.BaseModel):
     event_type: str = 'CloseModalEvent'

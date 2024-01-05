@@ -1,177 +1,27 @@
-html = """
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.3/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/antd.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/reset.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ant-design-icons/4.7.0/index.umd.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const {            Button,
-            FloatButton,
-            Typography,
-            Divider,
-            Flex,
-            Grid,
-            Layout,
-            Space,
-            Anchor,
-            Breadcrumb,
-            Dropdown,
-            Menu,
-            Pagination,
-            Steps,
-            AutoComplete,
-            Cascader,
-            Checkbox,
-            ColorPicker,
-            DatePicker,
-            Form,
-            Input,
-            InputNumber,
-            Mentions,
-            Radio,
-            Rate,
-            Select,
-            Slider,
-            Switch,
-            TimePicker,
-            Transfer,
-            TreeSelect,
-            Upload,
-            Avatar,
-            Badge,
-            Calendar,
-            Card,
-            Carousel,
-            Collapse,
-            Descriptions,
-            Empty,
-            Image,
-            List,
-            Popover,
-            QRCode,
-            Segmented,
-            Statistic,
-            Table,
-            Tabs,
-            Tag,
-            Timeline,
-            Tooltip,
-            Tour,
-            Tree,
-            Alert,
-            Drawer,
-            Message,
-            Modal,
-            Notification,
-            Popconfirm,
-            Progress,
-            Result,
-            Skeleton,
-            Spin,
-            Watermark,
-            Affix,
-            App,
-            ConfigProvider } = antd;
-        const { Header, Content, Sider, Footer } = Layout;
-        const antdComponents = {
-            Header, 
-            Content, 
-            Sider, 
-            Footer,
-            Button,
-            FloatButton,
-            Typography,
-            Divider,
-            Flex,
-            Grid,
-            Layout,
-            Space,
-            Anchor,
-            Breadcrumb,
-            Dropdown,
-            Menu,
-            Pagination,
-            Steps,
-            AutoComplete,
-            Cascader,
-            Checkbox,
-            ColorPicker,
-            DatePicker,
-            Form,
-            Input,
-            InputNumber,
-            Mentions,
-            Radio,
-            Rate,
-            Select,
-            Slider,
-            Switch,
-            TimePicker,
-            Transfer,
-            TreeSelect,
-            Upload,
-            Avatar,
-            Badge,
-            Calendar,
-            Card,
-            Carousel,
-            Collapse,
-            Descriptions,
-            Empty,
-            Image,
-            List,
-            Popover,
-            QRCode,
-            Segmented,
-            Statistic,
-            Table,
-            Tabs,
-            Tag,
-            Timeline,
-            Tooltip,
-            Tour,
-            Tree,
-            Alert,
-            Drawer,
-            Message,
-            Modal,
-            Notification,
-            Popconfirm,
-            Progress,
-            Result,
-            Skeleton,
-            Spin,
-            Watermark,
-            Affix,
-            App,
-            ConfigProvider
-        }
+from fastapi.responses import HTMLResponse
+from .importcomp import import_antd_component
+from .import_icon import import_antd_icon_component
+from .client_event_type import eventtypelist
+from .antd_componentmap import antdComponents
+from .client_anyevent import iteratePropsAndAttachEventHandler
+from .convert_json_to_ui import convertJsonToAntdUi_
+from .chart import NexiumUIChart, NexiumUIRealTimeChart
+from .utils import useref
+from .antd_ui import AntdUiFromJson
+from pydantic import BaseModel
 
 
 
-        const eventtypelist = ["onClick", "onChange"];
-
+def EventHandler() -> str:
+    te = """
         const genericEventHandler = (event, e) => {
             if (!event || !event.event_type) return;
 
             switch (event.event_type) {
-                case 'NavigateToEvent':
-                    // window.location.host = 'https://example.com';
-                    alert(e);
-                    console.log(event.event_type, e);
+                case 'PageNavigationEvent':
+                    const loc = history.push('/api/' + event.path);
+                    // window.parent.location = loc
+                    window.location.reload();
                     break;
                 case 'APIRequestEvent':
                     async function FetchApi() {
@@ -186,8 +36,8 @@ html = """
                             method,
                             url,
                             headers: {
-                            'Content-Type': 'application/json',
-                            ...(headers || {}),
+                                'Content-Type': 'application/json',
+                                ...(headers || {}),
                             },
                             data,
                             timeout: timeout || 0, // Set timeout to 0 for no timeout
@@ -201,9 +51,9 @@ html = """
                             const response = await axios(axiosConfig);
 
                             if (response.status === 200) {
-                            console.log(response.data);
+                                console.log(response.data);
                             } else {
-                            throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                                throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
                             }
                         } catch (error) {
                             console.error('Fehler bei der Anfrage:', error.message);
@@ -212,69 +62,74 @@ html = """
                     }
 
                     FetchApi();
+                    break;
                 default:
                     break;
             }
         };
-        const iteratePropsAndAttachEventHandler = (props) => {
-            const updatedProps = { ...props };
-            for (const propName in updatedProps) {
-                if (eventtypelist.includes(propName)) {
-                    const eventTypeValue = updatedProps[propName];
-                    updatedProps[propName] = (e) => genericEventHandler(eventTypeValue, e);
-                }
-            }
-            return updatedProps;
-        };
+        """
+    return te
 
-        const convertJsonToAntdUi = (json) => {
-            if (!json || !json.component) return null;
-            const { component, content, props } = json;
-            const updatedProps = iteratePropsAndAttachEventHandler(props);
 
-            const Component = antdComponents[component];
+async def initial_component(page_name, page_content: BaseModel,language:str):
+    import_component = import_antd_component()
+    import_icons = import_antd_icon_component()
+    event_map = eventtypelist()
+    antdComponentMap = antdComponents()
+    anyevent = iteratePropsAndAttachEventHandler()
+    eventhandler = EventHandler()
+    convertui = convertJsonToAntdUi_()
+    chart_1 = NexiumUIChart()
+    chart_2 = NexiumUIRealTimeChart()
+    ref = useref()
+    RenderAntdUi = AntdUiFromJson(content=page_content.model_dump_json())
+    import_router_dom = """const { BrowserRouter, Route, Link, useHistory } = ReactRouterDOM;"""
+    react_compiler = f"""
+    
+        {import_component}
+        {import_icons}
+        {import_router_dom}
+        {ref}
+        {chart_1}
+        {chart_2}
+        const {page_name}Component = () => {{
+            const history = useHistory();
+            {event_map}
+            {antdComponentMap}
+            {eventhandler}
+            {anyevent}
+            {convertui}
+            {RenderAntdUi}
 
-            return (
-                <Component {...updatedProps}>
-                    {content && (
-                        Array.isArray(content)
-                            ? content.map((item, index) => (
-                                <div key={index}>{convertJsonToAntdUi(item)}</div>
-                            ))
-                            : content
-                    )}
-                </Component>
-            );
-        };
-
-        const AntdUiFromJson = ({ json }) => (
-            <div>{convertJsonToAntdUi(json)}</div>
-        );
-
-        const Render = () => {
-            const [jsonData, setJsonData] = React.useState({});
-
-            React.useEffect(() => {
-                axios.get('http://localhost:8000/api/page_layout')
-                    .then(response => setJsonData(JSON.parse(response.data)))
-                    .catch(error => console.error('Error fetching data:', error));
-            }, []);
-
-            return <AntdUiFromJson json={jsonData} />;
-        };
+            return(<AntdUiFromJson/>)
+        }};
 
         ReactDOM.render(
-            <Render />,
-            document.querySelector('#root'),
-        );
-    </script>
-</body>
-</html>
+            <BrowserRouter>
+                <Route path={{window.location.pathname}} exact component={{() => <{page_name}Component />}} />
+            </BrowserRouter>,
+            document.getElementById('root')
+        )
+    """
 
-
-
-
-
-
-"""
-
+    react_cdn = f"""
+        <!DOCTYPE html>
+        <html lang="{language}">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.jsdelivr.net/npm/axios@1.6.3/dist/axios.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+            <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+            <script crossorigin src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/antd.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@antv/g2plot@2.4.31/dist/g2plot.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/reset.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/ant-design-icons/4.7.0/index.umd.min.js"></script>
+            <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+            <title>{page_name}</title>
+        </head>
+    """
+    template = f"{react_cdn}\n<body>\n<div id='root'></div>\n<script type='text/babel'>{react_compiler}</script></body></html>"
+    return HTMLResponse(content=template)

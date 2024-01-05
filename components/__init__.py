@@ -1,5 +1,9 @@
 import pydantic as p
 from typing import Union, Literal, Optional,Dict,Any, Callable,List
+from pydantic import BaseModel, Field
+from typing import List, Optional, Union
+from ..ui_props.props import G2PlotProps
+
 
 
 
@@ -14,35 +18,46 @@ class Button(p.BaseModel, extra='forbid'):
 
 class Sider(p.BaseModel, extra='forbid'):
     component:Literal['Sider'] = 'Sider'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Content(p.BaseModel, extra='forbid'):
     component:Literal['Content'] = 'Content'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 class Footer(p.BaseModel, extra='forbid'):
     component:Literal['Footer'] = 'Footer'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Header(p.BaseModel, extra='forbid'):
     component:Literal['Header'] = 'Header'
-    content:List[Union[str, 'Any']]
+    content:str
     props: Dict[str,Any] = {}
      
 
 
 
+class Title(p.BaseModel, extra='forbid'):
+    component:Literal['Title'] = 'Title'
+    content:str
+    props: Dict[str,Any] = {}
+     
+
+class G2Plot(p.BaseModel, extra='forbid'):
+    component:Literal['NexiumUIChart'] = 'NexiumUIChart'
+    props: G2PlotProps 
 
 
-
+class G2PlotRealTimeChart(p.BaseModel, extra='forbid'):
+    component:Literal['NexiumUIRealTimeChart'] = 'NexiumUIRealTimeChart'
+    props: G2PlotProps 
 
 
 
@@ -71,35 +86,50 @@ class Icon(p.BaseModel, extra='forbid'):
 
 class Layout(p.BaseModel, extra='forbid'):
     component:Literal['Layout'] = 'Layout'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
+
+class ReactNode(p.BaseModel, extra='forbid'):
+    component:str
+    content:Any
+    props: Dict[str,Any] = {}
+
+
+class AntdIcon(p.BaseModel, extra='forbid'):
+    component:str
+    content:Any
+    props: Dict[str,Any] = {}
+
+
+
+
 class Divider(p.BaseModel, extra='forbid'):
     component:Literal['Divider'] = 'Divider'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Flex(p.BaseModel, extra='forbid'):
     component:Literal['Flex'] = 'Flex'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Grid(p.BaseModel, extra='forbid'):
     component:Literal['Grid'] = 'Grid'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Space(p.BaseModel, extra='forbid'):
     component:Literal['Space'] = 'Space'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -107,56 +137,56 @@ class Space(p.BaseModel, extra='forbid'):
 
 class Anchor(p.BaseModel, extra='forbid'):
     component:Literal['Anchor'] = 'Anchor'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Breadcrumb(p.BaseModel, extra='forbid'):
     component:Literal['Breadcrumb'] = 'Breadcrumb'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Dropdown(p.BaseModel, extra='forbid'):
     component:Literal['Dropdown'] = 'Dropdown'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Menu(p.BaseModel, extra='forbid'):
     component:Literal['Menu'] = 'Menu'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Pagination(p.BaseModel, extra='forbid'):
     component:Literal['Pagination'] = 'Pagination'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Steps(p.BaseModel, extra='forbid'):
     component:Literal['Steps'] = 'Steps'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class AutoComplete(p.BaseModel, extra='forbid'):
     component:Literal['AutoComplete'] = 'AutoComplete'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Cascader(p.BaseModel, extra='forbid'):
     component:Literal['Cascader'] = 'Cascader'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -183,7 +213,7 @@ class DatePicker(p.BaseModel, extra='forbid'):
 
 class Form(p.BaseModel, extra='forbid'):
     component:Literal['Form'] = 'Form'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -222,7 +252,7 @@ class Rate(p.BaseModel, extra='forbid'):
 
 class Select(p.BaseModel, extra='forbid'):
     component:Literal['Select'] = 'Select'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -249,7 +279,7 @@ class TimePicker(p.BaseModel, extra='forbid'):
 
 class Transfer(p.BaseModel, extra='forbid'):
     component:Literal['Transfer'] = 'Transfer'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -263,21 +293,21 @@ class TreeSelect(p.BaseModel, extra='forbid'):
 
 class Upload(p.BaseModel, extra='forbid'):
     component:Literal['Upload'] = 'Upload'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Avatar(p.BaseModel, extra='forbid'):
     component:Literal['Avatar'] = 'Avatar'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Badge(p.BaseModel, extra='forbid'):
     component:Literal['Badge'] = 'Badge'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -291,7 +321,7 @@ class Calendar(p.BaseModel, extra='forbid'):
 
 class Card(p.BaseModel, extra='forbid'):
     component:Literal['Card'] = 'Card'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -305,21 +335,21 @@ class Carousel(p.BaseModel, extra='forbid'):
 
 class Collapse(p.BaseModel, extra='forbid'):
     component:Literal['Collapse'] = 'Collapse'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Descriptions(p.BaseModel, extra='forbid'):
     component:Literal['Descriptions'] = 'Descriptions'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Empty(p.BaseModel, extra='forbid'):
     component:Literal['Empty'] = 'Empty'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -333,7 +363,7 @@ class Image(p.BaseModel, extra='forbid'):
 
 class UIList(p.BaseModel, extra='forbid'):
     component:Literal['List'] = 'List'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -368,14 +398,14 @@ class Statistic(p.BaseModel, extra='forbid'):
 
 class Table(p.BaseModel, extra='forbid'):
     component:Literal['Table'] = 'Table'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
 
 class Tabs(p.BaseModel, extra='forbid'):
     component:Literal['Tabs'] = 'Tabs'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -424,7 +454,7 @@ class Alert(p.BaseModel, extra='forbid'):
 
 class Drawer(p.BaseModel, extra='forbid'):
     component:Literal['Drawer'] = 'Drawer'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
      
 
@@ -497,11 +527,11 @@ class Affix(p.BaseModel, extra='forbid'):
     content:str
     props: Dict[str,Any] = {}
      
-
+Layout
 
 class App(p.BaseModel, extra='forbid'):
     component:Literal['App'] = 'App'
-    content:List[Union[str, 'Any']]
+    content:Any
     props: Dict[str,Any] = {}
     props: Dict[str,Any] = {}
      

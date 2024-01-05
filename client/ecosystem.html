@@ -1,0 +1,1406 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.3/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script crossorigin src="https://unpkg.com/react-router-dom@5.3.0/umd/react-router-dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/antd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@antv/g2plot@2.4.31/dist/g2plot.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.4/dist/reset.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ant-design-icons/4.7.0/index.umd.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+    <title>About</title>
+</head>
+
+<body>
+<div id='root'></div>
+<script type='text/babel'>
+
+
+
+
+
+const {
+    Button,
+    FloatButton,
+    Typography,
+    Divider,
+    Flex,
+    Grid,
+    Layout,
+    Space,
+    Anchor,
+    Breadcrumb,
+    Dropdown,
+    Menu,
+    Pagination,
+    Steps,
+    AutoComplete,
+    Cascader,
+    Checkbox,
+    ColorPicker,
+    Col,
+    DatePicker,
+    Form,
+    Input,
+    InputNumber,
+    Mentions,
+    Radio,
+    Rate,
+    Row,
+    Select,
+    Slider,
+    Switch,
+    TimePicker,
+    Transfer,
+    TreeSelect,
+    Upload,
+    Avatar,
+    Badge,
+    Calendar,
+    Card,
+    Carousel,
+    Collapse,
+    Descriptions,
+    Empty,
+    Image,
+    List,
+    Popover,
+    QRCode,
+    Segmented,
+    Statistic,
+    Table,
+    Tabs,
+    Tag,
+    Timeline,
+    Tooltip,
+    Tour,
+    Tree,
+    Alert,
+    Drawer,
+    Message,
+    Modal,
+    Notification,
+    Popconfirm,
+    Progress,
+    Result,
+    Skeleton,
+    Spin,
+    Watermark,
+    Affix,
+    App,
+    ConfigProvider 
+} = antd;
+const { Header, Content, Sider, Footer } = Layout;
+const {Text, Title, Paragraph} = Typography;
+const {TextArea, Password, Search} = Input
+const {Meta} =Card;
+
+
+
+const {
+StepBackwardOutlined,
+StepForwardOutlined,
+FastBackwardOutlined,
+FastForwardOutlined,
+ShrinkOutlined,
+ArrowsAltOutlined,
+DownOutlined,
+UpOutlined,
+LeftOutlined,
+RightOutlined,
+CaretUpOutlined,
+CaretDownOutlined,
+CaretLeftOutlined,
+CaretRightOutlined,
+UpCircleOutlined,
+DownCircleOutlined,
+LeftCircleOutlined,
+RightCircleOutlined,
+DoubleRightOutlined,
+DoubleLeftOutlined,
+VerticalLeftOutlined,
+VerticalRightOutlined,
+VerticalAlignTopOutlined,
+VerticalAlignMiddleOutlined,
+VerticalAlignBottomOutlined,
+ForwardOutlined,
+BackwardOutlined,
+RollbackOutlined,
+EnterOutlined,
+RetweetOutlined,
+SwapOutlined,
+SwapLeftOutlined,
+SwapRightOutlined,
+ArrowUpOutlined,
+ArrowDownOutlined,
+ArrowLeftOutlined,
+ArrowRightOutlined,
+PlayCircleOutlined,
+UpSquareOutlined,
+DownSquareOutlined,
+LeftSquareOutlined,
+RightSquareOutlined,
+LoginOutlined,
+LogoutOutlined,
+MenuFoldOutlined,
+MenuUnfoldOutlined,
+BorderBottomOutlined,
+BorderHorizontalOutlined,
+BorderInnerOutlined,
+BorderOuterOutlined,
+BorderLeftOutlined,
+BorderRightOutlined,
+BorderTopOutlined,
+BorderVerticleOutlined,
+PicCenterOutlined,
+PicLeftOutlined,
+PicRightOutlined,
+RadiusBottomleftOutlined,
+RadiusBottomrightOutlined,
+RadiusUpleftOutlined,
+RadiusUprightOutlined,
+FullscreenOutlined,
+FullscreenExitOutlined,
+QuestionOutlined,
+QuestionCircleOutlined,
+PlusOutlined,
+PlusCircleOutlined,
+PauseOutlined,
+PauseCircleOutlined,
+MinusOutlined,
+MinusCircleOutlined,
+PlusSquareOutlined,
+MinusSquareOutlined,
+InfoOutlined,
+InfoCircleOutlined,
+ExclamationOutlined,
+ExclamationCircleOutlined,
+CloseOutlined,
+CloseCircleOutlined,
+CloseSquareOutlined,
+CheckOutlined,
+CheckCircleOutlined,
+CheckSquareOutlined,
+ClockCircleOutlined,
+WarningOutlined,
+IssuesCloseOutlined,
+StopOutlined,
+EditOutlined,
+FormOutlined,
+CopyOutlined,
+ScissorOutlined,
+DeleteOutlined,
+SnippetsOutlined,
+DiffOutlined,
+HighlightOutlined,
+AlignCenterOutlined,
+AlignLeftOutlined,
+AlignRightOutlined,
+BgColorsOutlined,
+BoldOutlined,
+ItalicOutlined,
+UnderlineOutlined,
+StrikethroughOutlined,
+RedoOutlined,
+UndoOutlined,
+ZoomInOutlined,
+ZoomOutOutlined,
+FontColorsOutlined,
+FontSizeOutlined,
+LineHeightOutlined,
+DashOutlined,
+SmallDashOutlined,
+SortAscendingOutlined,
+SortDescendingOutlined,
+DragOutlined,
+OrderedListOutlined,
+UnorderedListOutlined,
+RadiusSettingOutlined,
+ColumnWidthOutlined,
+ColumnHeightOutlined,
+AreaChartOutlined,
+PieChartOutlined,
+BarChartOutlined,
+DotChartOutlined,
+LineChartOutlined,
+RadarChartOutlined,
+HeatMapOutlined,
+FallOutlined,
+RiseOutlined,
+StockOutlined,
+BoxPlotOutlined,
+FundOutlined,
+SlidersOutlined,
+AndroidOutlined,
+AppleOutlined,
+WindowsOutlined,
+IeOutlined,
+ChromeOutlined,
+GithubOutlined,
+AliwangwangOutlined,
+DingdingOutlined,
+WeiboSquareOutlined,
+WeiboCircleOutlined,
+TaobaoCircleOutlined,
+Html5Outlined,
+WeiboOutlined,
+TwitterOutlined,
+WechatOutlined,
+WhatsAppOutlined,
+YoutubeOutlined,
+AlipayCircleOutlined,
+TaobaoOutlined,
+DingtalkOutlined,
+SkypeOutlined,
+QqOutlined,
+MediumWorkmarkOutlined,
+GitlabOutlined,
+MediumOutlined,
+LinkedinOutlined,
+GooglePlusOutlined,
+DropboxOutlined,
+FacebookOutlined,
+CodepenOutlined,
+CodeSandboxOutlined,
+AmazonOutlined,
+GoogleOutlined,
+CodepenCircleOutlined,
+AlipayOutlined,
+AntDesignOutlined,
+AntCloudOutlined,
+AliyunOutlined,
+ZhihuOutlined,
+SlackOutlined,
+SlackSquareOutlined,
+BehanceOutlined,
+BehanceSquareOutlined,
+DribbbleOutlined,
+DribbbleSquareOutlined,
+InstagramOutlined,
+YuqueOutlined,
+AlibabaOutlined,
+YahooOutlined,
+RedditOutlined,
+SketchOutlined,
+AccountBookOutlined,
+AimOutlined,
+AlertOutlined,
+ApartmentOutlined,
+ApiOutlined,
+AppstoreAddOutlined,
+AppstoreOutlined,
+AudioOutlined,
+AudioMutedOutlined,
+AuditOutlined,
+BankOutlined,
+BarcodeOutlined,
+BarsOutlined,
+BellOutlined,
+BlockOutlined,
+BookOutlined,
+BorderOutlined,
+BorderlessTableOutlined,
+BranchesOutlined,
+BugOutlined,
+BuildOutlined,
+BulbOutlined,
+CalculatorOutlined,
+CalendarOutlined,
+CameraOutlined,
+CarOutlined,
+CarryOutOutlined,
+CiCircleOutlined,
+CiOutlined,
+ClearOutlined,
+CloudDownloadOutlined,
+CloudOutlined,
+CloudServerOutlined,
+CloudSyncOutlined,
+CloudUploadOutlined,
+ClusterOutlined,
+CodeOutlined,
+CoffeeOutlined,
+CommentOutlined,
+CompassOutlined,
+CompressOutlined,
+ConsoleSqlOutlined,
+ContactsOutlined,
+ContainerOutlined,
+ControlOutlined,
+CopyrightOutlined,
+CreditCardOutlined,
+CrownOutlined,
+CustomerServiceOutlined,
+DashboardOutlined,
+DatabaseOutlined,
+DeleteColumnOutlined,
+DeleteRowOutlined,
+DeliveredProcedureOutlined,
+DeploymentUnitOutlined,
+DesktopOutlined,
+DisconnectOutlined,
+DislikeOutlined,
+DollarOutlined,
+DownloadOutlined,
+EllipsisOutlined,
+EnvironmentOutlined,
+EuroCircleOutlined,
+EuroOutlined,
+ExceptionOutlined,
+ExpandAltOutlined,
+ExpandOutlined,
+ExperimentOutlined,
+ExportOutlined,
+EyeOutlined,
+EyeInvisibleOutlined,
+FieldBinaryOutlined,
+FieldNumberOutlined,
+FieldStringOutlined,
+FieldTimeOutlined,
+FileAddOutlined,
+FileDoneOutlined,
+FileExcelOutlined,
+FileExclamationOutlined,
+FileOutlined,
+FileGifOutlined,
+FileImageOutlined,
+FileJpgOutlined,
+FileMarkdownOutlined,
+FilePdfOutlined,
+FilePptOutlined,
+FileProtectOutlined,
+FileSearchOutlined,
+FileSyncOutlined,
+FileTextOutlined,
+FileUnknownOutlined,
+FileWordOutlined,
+FileZipOutlined,
+FilterOutlined,
+FireOutlined,
+FlagOutlined,
+FolderAddOutlined,
+FolderOutlined,
+FolderOpenOutlined,
+FolderViewOutlined,
+ForkOutlined,
+FormatPainterOutlined,
+FrownOutlined,
+FunctionOutlined,
+FundProjectionScreenOutlined,
+FundViewOutlined,
+FunnelPlotOutlined,
+GatewayOutlined,
+GifOutlined,
+GiftOutlined,
+GlobalOutlined,
+GoldOutlined,
+GroupOutlined,
+HddOutlined,
+HeartOutlined,
+HistoryOutlined,
+HolderOutlined,
+HomeOutlined,
+HourglassOutlined,
+IdcardOutlined,
+ImportOutlined,
+InboxOutlined,
+InsertRowAboveOutlined,
+InsertRowBelowOutlined,
+InsertRowLeftOutlined,
+InsertRowRightOutlined,
+InsuranceOutlined,
+InteractionOutlined,
+KeyOutlined,
+LaptopOutlined,
+LayoutOutlined,
+LikeOutlined,
+LineOutlined,
+LinkOutlined,
+Loading3QuartersOutlined,
+LoadingOutlined,
+LockOutlined,
+MacCommandOutlined,
+MailOutlined,
+ManOutlined,
+MedicineBoxOutlined,
+MehOutlined,
+MenuOutlined,
+MergeCellsOutlined,
+MessageOutlined,
+MobileOutlined,
+MoneyCollectOutlined,
+MonitorOutlined,
+MoreOutlined,
+NodeCollapseOutlined,
+NodeExpandOutlined,
+NodeIndexOutlined,
+NotificationOutlined,
+NumberOutlined,
+OneToOneOutlined,
+PaperClipOutlined,
+PartitionOutlined,
+PayCircleOutlined,
+PercentageOutlined,
+PhoneOutlined,
+PictureOutlined,
+PlaySquareOutlined,
+PoundCircleOutlined,
+PoundOutlined,
+PoweroffOutlined,
+PrinterOutlined,
+ProfileOutlined,
+ProjectOutlined,
+PropertySafetyOutlined,
+PullRequestOutlined,
+PushpinOutlined,
+QrcodeOutlined,
+ReadOutlined,
+ReconciliationOutlined,
+RedEnvelopeOutlined,
+ReloadOutlined,
+RestOutlined,
+RobotOutlined,
+RocketOutlined,
+RotateLeftOutlined,
+RotateRightOutlined,
+SafetyCertificateOutlined,
+SafetyOutlined,
+SaveOutlined,
+ScanOutlined,
+ScheduleOutlined,
+SearchOutlined,
+SecurityScanOutlined,
+SelectOutlined,
+SendOutlined,
+SettingOutlined,
+ShakeOutlined,
+ShareAltOutlined,
+ShopOutlined,
+ShoppingCartOutlined,
+ShoppingOutlined,
+SisternodeOutlined,
+SkinOutlined,
+SmileOutlined,
+SolutionOutlined,
+SoundOutlined,
+SplitCellsOutlined,
+StarOutlined,
+SubnodeOutlined,
+SwitcherOutlined,
+SyncOutlined,
+TableOutlined,
+TabletOutlined,
+TagOutlined,
+TagsOutlined,
+TeamOutlined,
+ThunderboltOutlined,
+ToTopOutlined,
+ToolOutlined,
+TrademarkCircleOutlined,
+TrademarkOutlined,
+TransactionOutlined,
+TranslationOutlined,
+TrophyOutlined,
+UngroupOutlined,
+UnlockOutlined,
+UploadOutlined,
+UsbOutlined,
+UserAddOutlined,
+UserDeleteOutlined,
+UserOutlined,
+UserSwitchOutlined,
+UsergroupAddOutlined,
+UsergroupDeleteOutlined,
+VerifiedOutlined,
+VideoCameraAddOutlined,
+VideoCameraOutlined,
+WalletOutlined,
+WifiOutlined,
+} = icons;
+
+
+const { BrowserRouter, Route, Link, useHistory } = ReactRouterDOM;
+
+function LogRefValue ({ id, useRefProp }) {
+    const targetElement = document.getElementById(id);
+    console.log('hallo')
+        if (targetElement && targetElement[useRefProp]) {
+            console.log(`Ref property "${useRefProp}" of element with ID "${id}":`, targetElement[useRefProp]);
+        } else {
+            console.error(`Element with ID "${id}" or ref property "${useRefProp}" not found.`);
+        }
+};
+
+
+function NexiumUIChart(props) {
+    const {
+        style,
+        chartType,
+        container_id,
+        data,
+        xField,
+        yField,
+        width,
+        height,
+        title_text,
+        descriptionText,
+        theme,
+        legend_position,
+        xAxis,
+        yAxis,
+        binNumber,
+        color,
+        min,
+        max,
+        tooltip_visible,
+        fontSize,
+    } = props;
+
+    const plotConfig = {
+        title: {
+            visible: true,
+            text: title_text,
+        },
+        description: {
+            visible: true,
+            text: descriptionText,
+        },
+        data,
+        xField,
+        yField,
+        theme,
+        width,
+        height,
+        legend: {
+            visible: true,
+            position: legend_position,
+        },
+        xAxis: {
+            ...xAxis,
+            title: {
+                ...xAxis.title,
+                style: {
+                    fontSize: fontSize || 12,
+                },
+            },
+        },
+        yAxis: {
+            ...yAxis,
+            title: {
+                ...yAxis.title,
+                style: {
+                    fontSize: fontSize || 12,
+                },
+            },
+        },
+        binNumber,
+        color,
+        min,
+        max,
+        tooltip: {
+            visible: tooltip_visible,
+        },
+    };
+// useEffect hook is not closed properly
+React.useEffect(() => {
+    const Plot = new G2Plot[chartType](document.getElementById(container_id), plotConfig);
+
+    Plot.render();
+
+    // Aufr�umen, wenn die Komponente unmounted wird
+    return () => Plot.destroy();
+
+    // Der useEffect-Hook ben�tigt keine Abh�ngigkeiten mehr, da Echtzeitaktualisierung entfernt wurde
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [chartType, container_id, data, xField, yField, width, height, title_text, descriptionText, theme, legend_position, xAxis, yAxis, binNumber, color, min, max, tooltip_visible, fontSize]);
+
+return <div id={container_id} style={style} />;
+}
+
+
+
+
+
+function NexiumUIRealTimeChart(props) {
+const {
+    style,
+    chartType,
+    container_id,
+    xField,
+    yField,
+    width,
+    height,
+    title_text,
+    descriptionText,
+    theme,
+    legend_position,
+    xAxis,
+    yAxis,
+    binNumber,
+    color,
+    min,
+    max,
+    tooltip_visible,
+    fontSize,
+    websocketURL,
+} = props;
+
+const plotConfig = {
+    title: {
+        visible: true,
+        text: title_text,
+    },
+    description: {
+        visible: true,
+        text: descriptionText,
+    },
+    data: [], // Start with an empty dataset
+    xField,
+    yField,
+    theme,
+    width,
+    height,
+    legend: {
+        visible: true,
+        position: legend_position,
+    },
+    xAxis: {
+        ...xAxis,
+        title: {
+            ...xAxis.title,
+            style: {
+                fontSize: fontSize || 12,
+            },
+        },
+    },
+    yAxis: {
+        ...yAxis,
+        title: {
+            ...yAxis.title,
+            style: {
+                fontSize: fontSize || 12,
+            },
+        },
+    },
+    binNumber,
+    color,
+    min,
+    max,
+    tooltip: {
+        visible: tooltip_visible,
+    },
+};
+
+React.useEffect(() => {
+        const containerElement = document.getElementById(container_id);
+
+        if (!containerElement) {
+            console.error(`Container element with id '${container_id}' not found.`);
+            return;
+        }
+
+        const Plot = new G2Plot[chartType](containerElement, plotConfig);
+
+        const socket = new WebSocket(websocketURL);
+
+        socket.onmessage = (event) => {
+            const newData = JSON.parse(event.data);
+            Plot.changeData(newData);
+        };
+
+        return () => {
+            socket.close();
+            Plot.destroy();
+        };
+    }, [chartType, container_id, /* other dependencies */]);
+
+    return <div id={container_id} style={style} />;
+}
+
+const AboutComponent = () => {
+    const history = useHistory();
+    
+const eventtypelist = [
+    "onClick", 
+    "onChange"
+];
+
+    
+
+const antdComponents = {
+    NexiumUIRealTimeChart,
+    NexiumUIChart,
+    Header, 
+    Content, 
+    Sider, 
+    Footer,
+    Button,
+    FloatButton,
+    Typography,
+    Divider,
+    Flex,
+    Grid,
+    Layout,
+    Space,
+    Anchor,
+    Breadcrumb,
+    Dropdown,
+    Menu,
+    Pagination,
+    Steps,
+    AutoComplete,
+    Cascader,
+    Checkbox,
+    ColorPicker,
+    DatePicker,
+    Form,
+    Input,
+    InputNumber,
+    Mentions,
+    Radio,
+    Rate,
+    Select,
+    Slider,
+    Switch,
+    TimePicker,
+    Transfer,
+    TreeSelect,
+    Upload,
+    Avatar,
+    Badge,
+    Calendar,
+    Card,
+    Carousel,
+    Collapse,
+    Descriptions,
+    Empty,
+    Image,
+    List,
+    Popover,
+    QRCode,
+    Segmented,
+    Statistic,
+    Table,
+    Tabs,
+    Tag,
+    Timeline,
+    Tooltip,
+    Tour,
+    Tree,
+    Alert,
+    Drawer,
+    Message,
+    Modal,
+    Notification,
+    Popconfirm,
+    Progress,
+    Result,
+    Skeleton,
+    Spin,
+    Watermark,
+    Affix,
+    App,
+    ConfigProvider,
+    StepBackwardOutlined,
+StepForwardOutlined,
+FastBackwardOutlined,
+FastForwardOutlined,
+ShrinkOutlined,
+ArrowsAltOutlined,
+DownOutlined,
+UpOutlined,
+LeftOutlined,
+RightOutlined,
+CaretUpOutlined,
+CaretDownOutlined,
+CaretLeftOutlined,
+CaretRightOutlined,
+UpCircleOutlined,
+DownCircleOutlined,
+LeftCircleOutlined,
+RightCircleOutlined,
+DoubleRightOutlined,
+DoubleLeftOutlined,
+VerticalLeftOutlined,
+VerticalRightOutlined,
+VerticalAlignTopOutlined,
+VerticalAlignMiddleOutlined,
+VerticalAlignBottomOutlined,
+ForwardOutlined,
+BackwardOutlined,
+RollbackOutlined,
+EnterOutlined,
+RetweetOutlined,
+SwapOutlined,
+SwapLeftOutlined,
+SwapRightOutlined,
+ArrowUpOutlined,
+ArrowDownOutlined,
+ArrowLeftOutlined,
+ArrowRightOutlined,
+PlayCircleOutlined,
+UpSquareOutlined,
+DownSquareOutlined,
+LeftSquareOutlined,
+RightSquareOutlined,
+LoginOutlined,
+LogoutOutlined,
+MenuFoldOutlined,
+MenuUnfoldOutlined,
+BorderBottomOutlined,
+BorderHorizontalOutlined,
+BorderInnerOutlined,
+BorderOuterOutlined,
+BorderLeftOutlined,
+BorderRightOutlined,
+BorderTopOutlined,
+BorderVerticleOutlined,
+PicCenterOutlined,
+PicLeftOutlined,
+PicRightOutlined,
+RadiusBottomleftOutlined,
+RadiusBottomrightOutlined,
+RadiusUpleftOutlined,
+RadiusUprightOutlined,
+FullscreenOutlined,
+FullscreenExitOutlined,
+QuestionOutlined,
+QuestionCircleOutlined,
+PlusOutlined,
+PlusCircleOutlined,
+PauseOutlined,
+PauseCircleOutlined,
+MinusOutlined,
+MinusCircleOutlined,
+PlusSquareOutlined,
+MinusSquareOutlined,
+InfoOutlined,
+InfoCircleOutlined,
+ExclamationOutlined,
+ExclamationCircleOutlined,
+CloseOutlined,
+CloseCircleOutlined,
+CloseSquareOutlined,
+CheckOutlined,
+CheckCircleOutlined,
+CheckSquareOutlined,
+ClockCircleOutlined,
+WarningOutlined,
+IssuesCloseOutlined,
+StopOutlined,
+EditOutlined,
+FormOutlined,
+CopyOutlined,
+ScissorOutlined,
+DeleteOutlined,
+SnippetsOutlined,
+DiffOutlined,
+HighlightOutlined,
+AlignCenterOutlined,
+AlignLeftOutlined,
+AlignRightOutlined,
+BgColorsOutlined,
+BoldOutlined,
+ItalicOutlined,
+UnderlineOutlined,
+StrikethroughOutlined,
+RedoOutlined,
+UndoOutlined,
+ZoomInOutlined,
+ZoomOutOutlined,
+FontColorsOutlined,
+FontSizeOutlined,
+LineHeightOutlined,
+DashOutlined,
+SmallDashOutlined,
+SortAscendingOutlined,
+SortDescendingOutlined,
+DragOutlined,
+OrderedListOutlined,
+UnorderedListOutlined,
+RadiusSettingOutlined,
+ColumnWidthOutlined,
+ColumnHeightOutlined,
+AreaChartOutlined,
+PieChartOutlined,
+BarChartOutlined,
+DotChartOutlined,
+LineChartOutlined,
+RadarChartOutlined,
+HeatMapOutlined,
+FallOutlined,
+RiseOutlined,
+StockOutlined,
+BoxPlotOutlined,
+FundOutlined,
+SlidersOutlined,
+AndroidOutlined,
+AppleOutlined,
+WindowsOutlined,
+IeOutlined,
+ChromeOutlined,
+GithubOutlined,
+AliwangwangOutlined,
+DingdingOutlined,
+WeiboSquareOutlined,
+WeiboCircleOutlined,
+TaobaoCircleOutlined,
+Html5Outlined,
+WeiboOutlined,
+TwitterOutlined,
+WechatOutlined,
+WhatsAppOutlined,
+YoutubeOutlined,
+AlipayCircleOutlined,
+TaobaoOutlined,
+DingtalkOutlined,
+SkypeOutlined,
+QqOutlined,
+MediumWorkmarkOutlined,
+GitlabOutlined,
+MediumOutlined,
+LinkedinOutlined,
+GooglePlusOutlined,
+DropboxOutlined,
+FacebookOutlined,
+CodepenOutlined,
+CodeSandboxOutlined,
+AmazonOutlined,
+GoogleOutlined,
+CodepenCircleOutlined,
+AlipayOutlined,
+AntDesignOutlined,
+AntCloudOutlined,
+AliyunOutlined,
+ZhihuOutlined,
+SlackOutlined,
+SlackSquareOutlined,
+BehanceOutlined,
+BehanceSquareOutlined,
+DribbbleOutlined,
+DribbbleSquareOutlined,
+InstagramOutlined,
+YuqueOutlined,
+AlibabaOutlined,
+YahooOutlined,
+RedditOutlined,
+SketchOutlined,
+AccountBookOutlined,
+AimOutlined,
+AlertOutlined,
+ApartmentOutlined,
+ApiOutlined,
+AppstoreAddOutlined,
+AppstoreOutlined,
+AudioOutlined,
+AudioMutedOutlined,
+AuditOutlined,
+BankOutlined,
+BarcodeOutlined,
+BarsOutlined,
+BellOutlined,
+BlockOutlined,
+BookOutlined,
+BorderOutlined,
+BorderlessTableOutlined,
+BranchesOutlined,
+BugOutlined,
+BuildOutlined,
+BulbOutlined,
+CalculatorOutlined,
+CalendarOutlined,
+CameraOutlined,
+CarOutlined,
+CarryOutOutlined,
+CiCircleOutlined,
+CiOutlined,
+ClearOutlined,
+CloudDownloadOutlined,
+CloudOutlined,
+CloudServerOutlined,
+CloudSyncOutlined,
+CloudUploadOutlined,
+ClusterOutlined,
+CodeOutlined,
+CoffeeOutlined,
+CommentOutlined,
+CompassOutlined,
+CompressOutlined,
+ConsoleSqlOutlined,
+ContactsOutlined,
+ContainerOutlined,
+ControlOutlined,
+CopyrightOutlined,
+CreditCardOutlined,
+CrownOutlined,
+CustomerServiceOutlined,
+DashboardOutlined,
+DatabaseOutlined,
+DeleteColumnOutlined,
+DeleteRowOutlined,
+DeliveredProcedureOutlined,
+DeploymentUnitOutlined,
+DesktopOutlined,
+DisconnectOutlined,
+DislikeOutlined,
+DollarOutlined,
+DownloadOutlined,
+EllipsisOutlined,
+EnvironmentOutlined,
+EuroCircleOutlined,
+EuroOutlined,
+ExceptionOutlined,
+ExpandAltOutlined,
+ExpandOutlined,
+ExperimentOutlined,
+ExportOutlined,
+EyeOutlined,
+EyeInvisibleOutlined,
+FieldBinaryOutlined,
+FieldNumberOutlined,
+FieldStringOutlined,
+FieldTimeOutlined,
+FileAddOutlined,
+FileDoneOutlined,
+FileExcelOutlined,
+FileExclamationOutlined,
+FileOutlined,
+FileGifOutlined,
+FileImageOutlined,
+FileJpgOutlined,
+FileMarkdownOutlined,
+FilePdfOutlined,
+FilePptOutlined,
+FileProtectOutlined,
+FileSearchOutlined,
+FileSyncOutlined,
+FileTextOutlined,
+FileUnknownOutlined,
+FileWordOutlined,
+FileZipOutlined,
+FilterOutlined,
+FireOutlined,
+FlagOutlined,
+FolderAddOutlined,
+FolderOutlined,
+FolderOpenOutlined,
+FolderViewOutlined,
+ForkOutlined,
+FormatPainterOutlined,
+FrownOutlined,
+FunctionOutlined,
+FundProjectionScreenOutlined,
+FundViewOutlined,
+FunnelPlotOutlined,
+GatewayOutlined,
+GifOutlined,
+GiftOutlined,
+GlobalOutlined,
+GoldOutlined,
+GroupOutlined,
+HddOutlined,
+HeartOutlined,
+HistoryOutlined,
+HolderOutlined,
+HomeOutlined,
+HourglassOutlined,
+IdcardOutlined,
+ImportOutlined,
+InboxOutlined,
+InsertRowAboveOutlined,
+InsertRowBelowOutlined,
+InsertRowLeftOutlined,
+InsertRowRightOutlined,
+InsuranceOutlined,
+InteractionOutlined,
+KeyOutlined,
+LaptopOutlined,
+LayoutOutlined,
+LikeOutlined,
+LineOutlined,
+LinkOutlined,
+Loading3QuartersOutlined,
+LoadingOutlined,
+LockOutlined,
+MacCommandOutlined,
+MailOutlined,
+ManOutlined,
+MedicineBoxOutlined,
+MehOutlined,
+MenuOutlined,
+MergeCellsOutlined,
+MessageOutlined,
+MobileOutlined,
+MoneyCollectOutlined,
+MonitorOutlined,
+MoreOutlined,
+NodeCollapseOutlined,
+NodeExpandOutlined,
+NodeIndexOutlined,
+NotificationOutlined,
+NumberOutlined,
+OneToOneOutlined,
+PaperClipOutlined,
+PartitionOutlined,
+PayCircleOutlined,
+PercentageOutlined,
+PhoneOutlined,
+PictureOutlined,
+PlaySquareOutlined,
+PoundCircleOutlined,
+PoundOutlined,
+PoweroffOutlined,
+PrinterOutlined,
+ProfileOutlined,
+ProjectOutlined,
+PropertySafetyOutlined,
+PullRequestOutlined,
+PushpinOutlined,
+QrcodeOutlined,
+ReadOutlined,
+ReconciliationOutlined,
+RedEnvelopeOutlined,
+ReloadOutlined,
+RestOutlined,
+RobotOutlined,
+RocketOutlined,
+RotateLeftOutlined,
+RotateRightOutlined,
+SafetyCertificateOutlined,
+SafetyOutlined,
+SaveOutlined,
+ScanOutlined,
+ScheduleOutlined,
+SearchOutlined,
+SecurityScanOutlined,
+SelectOutlined,
+SendOutlined,
+SettingOutlined,
+ShakeOutlined,
+ShareAltOutlined,
+ShopOutlined,
+ShoppingCartOutlined,
+ShoppingOutlined,
+SisternodeOutlined,
+SkinOutlined,
+SmileOutlined,
+SolutionOutlined,
+SoundOutlined,
+SplitCellsOutlined,
+StarOutlined,
+SubnodeOutlined,
+SwitcherOutlined,
+SyncOutlined,
+TableOutlined,
+TabletOutlined,
+TagOutlined,
+TagsOutlined,
+TeamOutlined,
+ThunderboltOutlined,
+ToTopOutlined,
+ToolOutlined,
+TrademarkCircleOutlined,
+TrademarkOutlined,
+TransactionOutlined,
+TranslationOutlined,
+TrophyOutlined,
+UngroupOutlined,
+UnlockOutlined,
+UploadOutlined,
+UsbOutlined,
+UserAddOutlined,
+UserDeleteOutlined,
+UserOutlined,
+UserSwitchOutlined,
+UsergroupAddOutlined,
+UsergroupDeleteOutlined,
+VerifiedOutlined,
+VideoCameraAddOutlined,
+VideoCameraOutlined,
+WalletOutlined,
+WifiOutlined,
+}
+
+
+    
+const genericEventHandler = (event, e) => {
+    if (!event || !event.event_type) return;
+
+    switch (event.event_type) {
+    
+
+        case 'PageNavigationEvent':
+            const loc = history.push(event.path);
+            // window.parent.location = loc
+            window.location.reload(); 
+            break;
+
+
+        case 'BindingEvent':
+            LogRefValue({ id: event.targest_id, useRefProp: event.property });
+            break;
+
+
+        case 'APIRequestEvent':
+            async function FetchApi() {
+                const { method, url, data, headers, auth, timeout, proxies, verify, cookies } = event;
+
+                if (!method || !url) {
+                    console.error('Missing required properties for APIRequestEvent:', event);
+                    return;
+                }
+
+                const axiosConfig = {
+                    method,
+                    url,
+                    headers: {
+                    'Content-Type': 'application/json',
+                    ...(headers || {}),
+                    },
+                    data,
+                    timeout: timeout || 0, // Set timeout to 0 for no timeout
+                    auth,
+                    proxy: proxies,
+                    httpsAgent: verify ? undefined : false,
+                    withCredentials: cookies ? true : false,
+                };
+
+                try {
+                    const response = await axios(axiosConfig);
+
+                    if (response.status === 200) {
+                    console.log(response.data);
+                    } else {
+                    throw new Error(`Fehler bei der Anfrage: ${response.status} ${response.statusText}`);
+                    }
+                } catch (error) {
+                    console.error('Fehler bei der Anfrage:', error.message);
+                    throw error;
+                }
+            }
+
+            FetchApi();
+        default:
+            break;
+    }
+};
+
+    
+const react_node_as_props = ["subTitle","title"];
+
+const iteratePropsAndAttachEventHandler = (props) => {
+    const updatedProps = { ...props };
+    for (const propName in updatedProps) {
+        if (eventtypelist.includes(propName)) {
+            const eventTypeValue = updatedProps[propName];
+            updatedProps[propName] = (e) => genericEventHandler(eventTypeValue, e);
+        }
+        if (react_node_as_props.includes(propName)) {
+            console.log(propName)
+            const reactNodeValue = updatedProps[propName];
+            updatedProps[propName] = convertJsonToAntdUi(reactNodeValue);
+        }
+    }
+
+    // Gib das modifizierte props-Objekt zur�ck
+    return updatedProps;
+};
+
+
+
+    
+    function ReactNode({ component, props, content }) {
+        const Element = component;
+
+        return <Element {...props}>{
+        content && (
+            Array.isArray(content)
+                ? content.map((item, index) => (
+                    <div key={index}>{convertJsonToAntdUi(item)}</div>
+                ))
+                : <div>{content}</div>
+            )
+        }</Element>;
+    }
+    
+    const convertJsonToAntdUi = (json) => {
+    if (!json || !json.component) return null;
+
+    const { component, content, props } = json;
+    const Component = antdComponents[component];
+    const updatedProps = iteratePropsAndAttachEventHandler(props);
+
+    if (!Component) {
+        return ReactNode({component, props:updatedProps, content})
+    }
+
+    return (
+        <Component {...updatedProps}>
+            {content && (
+                Array.isArray(content)
+                    ? content.map((item, index) => (
+                        <div key={index}>{convertJsonToAntdUi(item)}</div>
+                    ))
+                    : <div>{content}</div>
+            )}
+        </Component>
+    );
+};
+
+
+
+    
+
+const AntdUiFromJson = () => {
+const [data, setData ] = React.useState({
+"component": "Layout",
+"content": [
+{
+"component": "Result",
+"content": "Submit",
+"props": {
+"subTitle": {
+  "component": "SaveOutlined",
+  "content": "",
+  "props": {
+    "style": {
+      "color": "red"
+    }
+  }
+}
+}
+}
+],
+"props": {}
+})
+
+    return(
+    
+    <div>
+  
+    {convertJsonToAntdUi(data)}
+    </div>
+    )
+};
+
+
+    return(
+        <div>
+            <AntdUiFromJson/>
+        </div>
+    )
+};
+
+ReactDOM.render(
+    <BrowserRouter>
+        <Route path={'/api/about'} component={() => <AboutComponent />} />
+    </BrowserRouter>,
+    document.getElementById('root')
+)
+</script></body></html>

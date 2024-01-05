@@ -9,7 +9,11 @@ def AntdUiFromJson(content)->str:
         const [data, setData ] = React.useState({content})
         
             return(
-            <div>{{convertJsonToAntdUi(data)}}</div>
+            
+            <div>
+          
+            {{convertJsonToAntdUi(data)}}
+            </div>
             )
         }};
     """

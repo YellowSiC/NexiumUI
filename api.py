@@ -3,10 +3,9 @@ from fastapi.responses import HTMLResponse
 import json
 import jwt
 from pydantic import BaseModel
-from .client.nexium import  html
+from .client.nexium import  initial_component
 from .page import Page
-
-
+from typing import List, Literal
 
 class NexiumUI(APIRouter):
     SECRET = "sic ui super &*#*$ secret"
@@ -24,9 +23,19 @@ class NexiumUI(APIRouter):
     async def get_request_json_method(self, request: Request):
         return await request.json()
     
-    def page(self, url, name, auth_needed=None):
+    def page(self, url:str, title:str, auth_needed=None, language:List[Literal["ab", "aa", "af", "ak", "sq", "am", "ar", "an", "hy", "as", "av", "ae", "ay", "az",
+                       "bm", "ba", "eu", "be", "bn", "bh", "bi", "bs", "br", "bg", "my", "ca", "ch", "ce", "ny",
+                       "zh", "zh-Hans", "zh-Hant", "cv", "kw", "co", "cr", "hr", "cs", "da", "dv", "nl", "dz", "en",
+                       "eo", "et", "ee", "fo", "fj", "fi", "fr", "ff", "gl", "gd", "gv", "ka", "de", "el", "kl",
+                       "gn", "gu", "ht", "ha", "he", "hz", "hi", "ho", "hu", "is", "io", "ig", "id", "ia", "ie", "iu",
+                       "ik", "ga", "it", "ja", "jv", "kn", "kr", "ks", "kk", "km", "ki", "rw", "rn", "ky", "kv", "kg",
+                       "ko", "ku", "kj", "lo", "la", "lv", "li", "ln", "lt", "lu", "lg", "lb", "gv", "mk", "mg", "ms",
+                       "ml", "mt", "mi", "mr", "mh", "mo", "mn", "na", "nv", "ng", "nd", "ne", "no", "nb", "nn", "ii",
+                       "oc", "oj", "cu", "or", "om", "os", "pi", "ps", "fa", "pl", "pt", "pa", "qu", "rm", "ro", "ru",
+                       "se", "sm", "sg", "sa", "sr", "sh", "st", "tn", "ts", "tr", "tk", "tw", "ug", "uk", "ur", "uz",
+                       "ve", "vi", "vo", "wa", "cy", "wo", "fy", "xh", "yi", "yo", "za", "zu"]] = 'en'):
         def decorator(func):
-            new_page = Page(name=name, url=url, builder=func, auth_needed=auth_needed)
+            new_page = Page(name=title, url=url, builder=func, auth_needed=auth_needed, language=language)
             self.pages[url] = new_page
             return new_page
         return decorator
@@ -86,8 +95,8 @@ class NexiumUI(APIRouter):
             return self.on_login['password'](msg['username'], msg['password'])
         else:
             return "Login type not supported"
-        
-    def frontend(self, app:FastAPI, ui:BaseModel) -> None:
+    
+    def init(self, app:FastAPI) -> None:
         from fastapi.middleware.cors import CORSMiddleware
         from fastapi.middleware.gzip import GZipMiddleware
 
@@ -99,22 +108,23 @@ class NexiumUI(APIRouter):
             allow_methods=["*"],
             allow_headers=["*"],
         )
-        self.app = self.generateui(ui)
-
-    def generateui(self,ui:BaseModel) -> APIRouter:
-        @self.get("/")
-        async def get_page_layout(request: Request):
-            # Your implementation here
-            return HTMLResponse(content=html)
-        
-        @self.get("/api/page_layout")
-        async def get_page_layout(request: Request):
-            # Your implementation here
-            return ui.model_dump_json(indent=2)
-
-
         @self.get('/api/{page_path:path}')
         async def get_page_layout(page_path: str, request: Request):
 
             return await self.serve_page(page_path, request)
         return self.app
+    
+    def initial_page(self, initial_page:BaseModel, page_name:str,language:List[Literal[
+        "ab", "aa", "af", "ak", "sq", "am", "ar", "an", "hy", "as", "av", "ae", "ay", "az",
+        "bm", "ba", "eu", "be", "bn", "bh", "bi", "bs", "br", "bg", "my", "ca", "ch", "ce", "ny",
+        "zh", "zh-Hans", "zh-Hant", "cv", "kw", "co", "cr", "hr", "cs", "da", "dv", "nl", "dz", "en",
+        "eo", "et", "ee", "fo", "fj", "fi", "fr", "ff", "gl", "gd", "gv", "ka", "de", "el", "kl",
+        "gn", "gu", "ht", "ha", "he", "hz", "hi", "ho", "hu", "is", "io", "ig", "id", "ia", "ie", "iu",
+        "ik", "ga", "it", "ja", "jv", "kn", "kr", "ks", "kk", "km", "ki", "rw", "rn", "ky", "kv", "kg",
+        "ko", "ku", "kj", "lo", "la", "lv", "li", "ln", "lt", "lu", "lg", "lb", "gv", "mk", "mg", "ms",
+        "ml", "mt", "mi", "mr", "mh", "mo", "mn", "na", "nv", "ng", "nd", "ne", "no", "nb", "nn", "ii",
+        "oc", "oj", "cu", "or", "om", "os", "pi", "ps", "fa", "pl", "pt", "pa", "qu", "rm", "ro", "ru",
+        "se", "sm", "sg", "sa", "sr", "sh", "st", "tn", "ts", "tr", "tk", "tw", "ug", "uk", "ur", "uz",
+        "ve", "vi", "vo", "wa", "cy", "wo", "fy", "xh", "yi", "yo", "za", "zu"]] = 'en'):
+        return initial_component(page_content=initial_page,page_name=page_name,language=language)
+

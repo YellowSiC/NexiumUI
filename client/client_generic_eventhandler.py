@@ -6,11 +6,20 @@ def genericEventHandler()->str:
             if (!event || !event.event_type) return;
 
             switch (event.event_type) {
-                case 'NavigateToEvent':
-                    // window.location.host = 'https://example.com';
-                    alert(e);
-                    console.log(event.event_type, e);
+            
+
+                case 'PageNavigationEvent':
+                    const loc = history.push(event.path);
+                    // window.parent.location = loc
+                    window.location.reload(); 
                     break;
+
+
+                case 'BindingEvent':
+                    LogRefValue({ id: event.targest_id, useRefProp: event.property });
+                    break;
+
+
                 case 'APIRequestEvent':
                     async function FetchApi() {
                         const { method, url, data, headers, auth, timeout, proxies, verify, cookies } = event;

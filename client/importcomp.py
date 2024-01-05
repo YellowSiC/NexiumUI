@@ -76,5 +76,8 @@ def import_antd_component()->str:
             ConfigProvider 
         } = antd;
         const { Header, Content, Sider, Footer } = Layout;
+        const {Text, Title, Paragraph} = Typography;
+        const {TextArea, Password, Search} = Input
+        const {Meta} =Card;
 
     """
