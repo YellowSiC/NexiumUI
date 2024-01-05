@@ -192,7 +192,7 @@ app.run()
  
    
 ```
-### In August 2023, NexiumUI has just been publicly released by software architecture Ari Bermeki and is in Alpha Stage.
+### In January 2024, NexiumUI has just been publicly released by software architecture Malek Ali at Yellow-SiC and is in Alpha Stage.
 Anyone can install and use NexiumUI. There may be issues, but we are actively working to resolve them.
 
 
