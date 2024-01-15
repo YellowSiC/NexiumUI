@@ -78,7 +78,7 @@ No more complex architecture with JavaScript frontend, REST API backend, databas
 ## 📦 Install
 
 ```bash
-pip install NexiumUIUI
+pip install nexium
 ```
 ## 🔨 Usage
 
