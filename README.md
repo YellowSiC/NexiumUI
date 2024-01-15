@@ -85,113 +85,92 @@ pip install NexiumUIUI
 Write your NexiumUI UI:
 
 ```python
-from NexiumUI import interface
-layout = interface.title(content='Hello World from NexiumUI UI!')
-app = interface.compiler(layout=layout, globale_ui_style='main.css')
-app.run()
- 
+
+
+from fastapi import FastAPI
+from nexium import ui , NexiumUI, e
+
+
+
+
+
+
+
+
+
+api = FastAPI()
+client = NexiumUI()
+client.init(app=api)
+api.include_router(client)
+
+
+
+
+
+page = {
+    'display': 'flex',
+    'flexDirection': 'column',
+    'alignItems': 'center',
+    'justifyContent': 'center',
+    'height': '80vh',  # Vollständige Bildschirmhöhe
+}
+
+nav = {
+    'fontSize': '100px',
+    'fontWeight': 'bold',
+    'color': '#E50914',  # Netflix-Rot
+    'cursor': 'pointer',
+    'marginBottom': '10px',  # Abstand zwischen Nexium und Beschreibung
+}
+
+description = {
+    'fontSize': '14px',
+    'color': '#555',
+    'textAlign': 'center',  # Zentrierung des Textes
+}
+
+
+d ="""
+Nexium empowers developers to effortlessly build real-time web, mobile, and desktop applications in Python, without requiring prior frontend experience.
+
+It is an incredibly powerful Python library that allows you to create cross-platform graphical user interface and Web applications with ease, similar to Electronjs, but with an integrated React and Ant Design user interface.
+"""
+
+@api.get("/")
+async def read_root():
+  """ Nexium First API Endpoint """
+  return ui.Layout(
+    content=[
+      ui.Content(style=page, content=[
+        ui.Title(content='Nexium', style=nav),
+        ui.Title(content='Nexium with Ant Design UI', style=description),
+        ui.Text(content=d, style=description),
+      ]),
+      ui.Footer(
+        content=[
+          ui.ReactNode(component='h4', content='Nexium ©2024 Created by Malek Ali at Yellow-SiC Development'),
+          ],
+        style={
+          'display': 'flex',
+          'justifyContent': 'center',
+          'alignItems': 'center',
+          'fontSize': '13px',
+          'color': '#333',  
+          'margin':'15px'
+        }
+      )
+    ],
+      style = {
+      'height':'100%'
+      }
+  )
+
+
+
    
 ```
 
-```python
 
-
-from NexiumUI import interface
-
-
-
-
-
-
-if __name__ == '__main__':
-
-    def main(data):
-        print(data)
-
-    d1 = interface.title(content='NexiumUI with Ant Design UI', level=2)
-    d2 = interface.slider(onChange=main)
-    image = interface.image(src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg", alt='hallo', width='350px', height='350px')
-    content = interface.content(content=[d1,d2, image])
-
-    app = interface.compiler(layout=content,globale_ui_style='main.css')
-    app.run()
- 
-   
-```
-<img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example.png?token=GHSAT0AAAAAACB7YTQISEN2ZMMLKTWEUH5AZIFUWNA">
-
-```python
-from NexiumUI import interface
-
-# example with Button onclick
-
-def main():
-  print('Hallo')
-
-
-layout = interface.button(text='Click', onclick=main)
-app = interface.compiler(layout=layout, globale_ui_style='main.css')
-app.run()
- 
-   
-```
-<img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example1.png?token=GHSAT0AAAAAACB7YTQJY6EVAT2RZGQTG5CUZIFUXLQ">
-
-```python
-from NexiumUI import interface
-
-
-
-def main(message):
-  print(f'Hallo{message}')
-
-
-layout = interface.input(placeholder='Click', onchange=main)
-app = interface.compiler(layout=layout, globale_ui_style='main.css')
-app.run()
- 
-   
-```
-
-
-<img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example2.png?token=GHSAT0AAAAAACB7YTQILUBDQ4WATNLWCYRQZIFUZAA">
-
-
-
-```python
-from NexiumUI import interface
-
-# example with violinChart
-
-def main():
-  print('Hallo')
-
-
-layout = interface.violinChart()
-app = interface.compiler(layout=layout, globale_ui_style='main.css')
-app.run()
- 
-   
-```
-<img width="50%" src="https://raw.githubusercontent.com/AriBermeki/logo/main/example4.png?token=GHSAT0AAAAAACB7YTQIDUH4E5XQEIUUWISSZIFU3XA">
-
-
-```python
-
-from NexiumUI import interface
-
-# example with slider onchage
-
-def main(message):
-  print(f'slider value{message}')
-
-
-layout = interface.slider(onchange=main)
-app = interface.compiler(layout=layout, globale_ui_style='main.css')
-app.run()
- 
-   
-```
 ### In January 2024, NexiumUI has just been publicly released by software architecture Malek Ali at Yellow-SiC and is in Alpha Stage.
 Anyone can install and use NexiumUI. There may be issues, but we are actively working to resolve them.
 
